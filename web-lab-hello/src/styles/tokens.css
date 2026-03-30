@@ -7,6 +7,9 @@
   --color-text: #1E293B;
   --color-border: #E2E8F0;
   --color-accent: #3B82F6;
+  --color-muted: #64748B;
+  --color-secondary: #1D4ED8;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 
   /* Spacing */
   --space-xs: 0.25rem;
@@ -14,6 +17,8 @@
   --space-md: 1rem;
   --space-lg: 1.5rem;
   --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
 
   /* Fluid Typography (Uygulama-2) - Automatically scales with viewport */
   --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
@@ -23,6 +28,9 @@
 
   /* Transitions & Misc */
   --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
   --radius-md: 8px;
   --radius-xs: 4px;
+  --radius-full: 9999px;
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
