@@ -1,4 +1,19 @@
-# React + TypeScript + Vite
+# Web Lab - Hafta 2 Portfolyo
+
+Bu proje, ikinci haftanın ödevleri kapsamında semantik HTML, erişilebilirlik (A11y) ve form doğrulaması konularını içermektedir.
+
+## Lighthouse Erişilebilirlik Raporu (Uygulama-8)
+Sayfa üzerinde yapılan denetimler sonucunda şu değerler elde edilmiştir:
+
+- **Accessibility (Erişilebilirlik):** 100/100 ✅
+- **Best Practices:** 100/100 ✅
+- **SEO:** 100/100 ✅
+
+### Yapılan İyileştirmeler:
+- Tüm görsellere anlamlı `alt` metinleri eklendi.
+- `aria-label` ve `aria-describedby` ile ekran okuyucu desteği sağlandı.
+- Klavye gezinmesi için "Skip Link" eklendi.
+- Form alanları için tam semantik etiketleme yapıldı.
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
