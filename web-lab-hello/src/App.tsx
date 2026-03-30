@@ -31,6 +31,9 @@ function App() {
           </ul>
         </section>
       </main>
+      <footer>
+        <p>&copy; 2026 Leyla Güneş - Web Tasarımı ve Programlama LAB-1</p>
+      </footer>
     </div>
   )
 }
