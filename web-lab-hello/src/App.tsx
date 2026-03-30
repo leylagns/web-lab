@@ -5,161 +5,175 @@ import project3Img from './assets/project3.png'
 import Button from './components/Button'
 import Input from './components/Input'
 import Card from './components/Card'
+import Alert from './components/Alert'
 
 function App() {
   return (
     <div className="min-h-screen transition-colors duration-500 bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 font-sans">
       
-      {/* Dark Mode Toggle */}
+      {/* Erişilebilirlik: Ana içeriğe atla (Uygulama-10) */}
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 bg-primary text-white p-3 z-50 rounded-br-lg shadow-lg"
+      >
+        Ana içeriğe atla
+      </a>
+
+      {/* Tema Değiştirici */}
       <button
         onClick={() => document.documentElement.classList.toggle('dark')}
-        className="fixed top-6 right-6 z-50 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md text-gray-800 dark:text-yellow-400 p-3 rounded-full shadow-xl hover:scale-110 transition-all border border-gray-200 dark:border-gray-700 cursor-pointer group"
+        className="fixed top-6 right-6 z-50 bg-white dark:bg-gray-800 text-gray-800 dark:text-yellow-400 p-3 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all border border-gray-200 dark:border-gray-700 cursor-pointer"
         aria-label="Tema degistir"
       >
-        <span className="dark:hidden">🌙</span>
-        <span className="hidden dark:inline">☀️</span>
+        <span className="dark:hidden text-xl">🌙</span>
+        <span className="hidden dark:inline text-xl">☀️</span>
       </button>
 
-      <header className="sticky top-0 z-40 bg-white/70 dark:bg-gray-900/70 backdrop-blur-lg border-b border-gray-200/50 dark:border-gray-800/50">
-        <div className="container mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="text-center md:text-left">
-            <h1 className="text-2xl font-bold tracking-tight text-primary dark:text-secondary">Leyla Güneş</h1>
-            <p className="text-xs font-bold uppercase tracking-widest text-muted">Web Laboratuvarı Hub</p>
-          </div>
-          <nav>
-            <ul className="flex items-center gap-2 sm:gap-6">
-              <li><a href="#hakkimda" className="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-wider">Hakkımda</a></li>
-              <li><a href="#projeler" className="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-wider">Projeler</a></li>
-              <li><a href="#uikit" className="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-wider">UI Kit</a></li>
-              <li><a href="#iletisim" className="px-5 py-2 bg-primary text-white rounded-full text-sm font-bold shadow-lg hover:bg-secondary transition-all">İletişim</a></li>
+      {/* HEADER & NAV (Uygulama-10) */}
+      <header className="sticky top-0 z-40 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
+        <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <h1 className="text-2xl font-bold text-primary dark:text-secondary tracking-tight">
+            Leyla Güneş
+          </h1>
+          <nav aria-label="Ana navigasyon">
+            <ul className="flex flex-wrap items-center justify-center gap-2">
+              {[
+                { label: 'Hakkımda', href: '#hakkimda' },
+                { label: 'Projeler', href: '#projeler' },
+                { label: 'İletişim', href: '#iletisim' },
+                { label: 'UI Kit', href: '#uikit' },
+              ].map((item) => (
+                <li key={item.href}>
+                  <a 
+                    href={item.href} 
+                    className="px-4 py-2 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </nav>
         </div>
       </header>
 
-      <main>
-        {/* HAKKIMDA */}
-        <section id="hakkimda" className="py-24 bg-gradient-to-b from-gray-50 to-white dark:from-gray-800/30 dark:to-gray-900">
-          <div className="container mx-auto px-6 flex flex-col lg:flex-row items-center gap-16">
-            <div className="relative group mx-auto lg:mx-0">
-              <div className="absolute -inset-4 bg-gradient-to-tr from-primary to-accent opacity-25 rounded-full blur-2xl transition-opacity"></div>
-              <img src={profileImg} alt="Leyla" className="relative w-72 h-72 rounded-full object-cover border-8 border-white dark:border-gray-800 shadow-2xl z-10" />
-            </div>
-            <div className="flex-1 text-center lg:text-left space-y-8">
-              <h2 className="text-4xl lg:text-6xl font-black tracking-tight leading-tight">Geleceği <span className="text-primary dark:text-secondary underline decoration-primary/20">Kodlayarak</span> İnşa Ediyorum.</h2>
-              <p className="text-lg lg:text-xl text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed">
-                Yazılım Mühendisliği yolculuğumda modern araçlarla daha temiz, daha hızlı ve daha etkileyici dijital deneyimler geliştiriyorum. 
-                Hafta-4'te Tailwind v4 ile bileşen tabanlı mimariye tam geçiş yaptık.
+      <main id="main-content">
+        
+        {/* HAKKIMDA BÖLÜMÜ (Uygulama-10) */}
+        <section id="hakkimda" className="py-20 px-4">
+          <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-12 lg:gap-20">
+            <figure className="shrink-0">
+              <img 
+                src={profileImg} 
+                alt="Leyla Güneş" 
+                className="w-48 h-48 lg:w-64 lg:h-64 rounded-full object-cover shadow-2xl border-4 border-white dark:border-gray-800 ring-4 ring-primary/10" 
+              />
+            </figure>
+            <div className="text-center md:text-left space-y-6">
+              <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white tracking-tighter">
+                Hakkımda
+              </h2>
+              <p className="text-lg lg:text-xl text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl">
+                Yazılım mühendisliği öğrencisi olarak modern web teknolojileri üzerine uzmanlaşmaya odaklanıyorum. 
+                Full-stack geliştirici adayı olarak modern ve fark yaratan kullanıcı dostu arayüzler oluşturuyorum.
               </p>
-              <div className="flex flex-wrap justify-center lg:justify-start gap-4">
-                <Button size="lg">CV İndir</Button>
-                <Button variant="secondary" size="lg">Projelerime Bak</Button>
-              </div>
+              <ul className="flex flex-wrap justify-center md:justify-start gap-3">
+                {['React', 'TypeScript', 'Tailwind v4', 'Node.js', 'Git'].map(skill => (
+                  <li key={skill} className="bg-primary text-white px-5 py-2 rounded-full text-sm font-bold shadow-md shadow-primary/20">
+                    {skill}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </section>
 
-        {/* PROJELER - Refactored with Card Component */}
-        <section id="projeler" className="py-24 container mx-auto px-6">
-          <h2 className="text-4xl font-bold mb-16 text-center tracking-tight">Projeler</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card title="E-Ticaret Sitesi" image={project1Img} imageAlt="E-Ticaret" footer={<div className="flex gap-2"><span className="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded">REACT</span> <span className="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded">NODE</span></div>}>
-              Tam kapsamlı alışveriş deneyimi sunan modern bir e-ticaret platformu.
-            </Card>
-            <Card title="Blog Portalı" image={project2Img} variant="outlined" footer={<Button size="sm" variant="ghost">Detaylar &rarr;</Button>}>
-              Markdown destekli, hızlı ve SEO uyumlu kişisel yazılım günlüğü.
-            </Card>
-            <Card title="Hava Durumu Şık" image={project3Img} variant="filled" footer={<span className="text-xs font-semibold text-muted tracking-widest">GÜNCEL VERİ</span>}>
-              Dünya genelindeki tüm şehirlerin anlık hava durumunu sunan API entegrasyonu.
-            </Card>
-          </div>
-        </section>
-
-        {/* UI KIT SHOWCASE (Uygulama 6-8 Görsellerindeki Talimatlar) */}
-        <section id="uikit" className="py-24 bg-gray-50 dark:bg-gray-800/10 border-t border-gray-100 dark:border-gray-800">
-          <div className="container mx-auto px-6">
-            <div className="mb-20 text-center">
-              <span className="text-xs font-bold uppercase tracking-[0.3em] text-primary/60 dark:text-secondary/60 mb-4 block">Laboratuvar Kitabı</span>
-              <h2 className="text-4xl font-black">Bileşen Kitaplığı</h2>
-              <p className="text-muted mt-4">Hafta-4 kapsamında geliştirilen yeniden kullanılabilir UI araçları.</p>
-            </div>
-
-            <div className="space-y-24">
-              {/* BUTTON VARIANTS */}
-              <div className="space-y-8">
-                <h3 className="text-xl font-bold flex items-center gap-3"><span className="p-2 bg-primary/10 text-primary rounded-lg text-sm">#1</span> Buton Varyantları</h3>
-                <div className="bg-white dark:bg-gray-800/50 p-10 rounded-[2rem] border border-gray-200 dark:border-gray-700 space-y-12 shadow-sm">
-                  <div className="space-y-4">
-                    <p className="text-xs font-bold text-muted uppercase tracking-widest">Boyutlar</p>
-                    <div className="flex flex-wrap items-end gap-6">
-                      <Button size="sm">Küçük Buton</Button>
-                      <Button size="md">Orta Buton</Button>
-                      <Button size="lg">Büyük Buton</Button>
-                    </div>
-                  </div>
-                  <div className="space-y-4">
-                    <p className="text-xs font-bold text-muted uppercase tracking-widest">Renkler & Durumlar</p>
-                    <div className="flex flex-wrap gap-4">
-                      <Button variant="primary">Primary</Button>
-                      <Button variant="secondary">Secondary</Button>
-                      <Button variant="danger">Danger</Button>
-                      <Button variant="ghost">Ghost</Button>
-                      <Button disabled>Devre Dışı</Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* INPUT VARIANTS */}
-              <div className="space-y-8">
-                <h3 className="text-xl font-bold flex items-center gap-3"><span className="p-2 bg-primary/10 text-primary rounded-lg text-sm">#2</span> Giriş (Input) Alanları</h3>
-                <div className="bg-white dark:bg-gray-800/50 p-10 rounded-[2rem] border border-gray-200 dark:border-gray-700 grid grid-cols-1 md:grid-cols-2 gap-8 shadow-sm">
-                  <Input id="name" label="Ad Soyad" placeholder="Ahmet Yılmaz" />
-                  <Input id="email" label="E-posta" type="email" helpText="Örnek: ad@mail.com" placeholder="mail@example.com" />
-                  <Input id="pass" label="Şifre" type="password" error="En az 8 karakter olmalı" defaultValue="1234" />
-                  <Input id="disabled" label="Kilitli Alan" disabled defaultValue="Bu alan düzenlenemez" />
-                </div>
-              </div>
-
-              {/* CARD VARIANTS */}
-              <div className="space-y-8">
-                <h3 className="text-xl font-bold flex items-center gap-3"><span className="p-2 bg-primary/10 text-primary rounded-lg text-sm">#3</span> Kart (Card) Tasarımları</h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  <Card variant="elevated" title="Gölgeli Kart" image="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600" imageAlt="Tasarım">
-                    <p>Elevated (gölgeli) kartlar, derinlik hissi vurgulanmak istenen önemli içerikler içindir.</p>
-                  </Card>
-                  <Card variant="outlined" title="Çerçeveli Kart">
-                    <p>Outlined (çerçeveli) kartlar, daha sade ve temiz yerleşimler için idealdir.</p>
-                  </Card>
-                  <Card variant="filled" title="Dolgulu Kart" footer={<Button size="sm" className="w-full">Seç</Button>}>
-                    <p>Filled (dolgulu) kartlar, gruplanmış içerikleri hafifçe ayırmak için kullanılır.</p>
-                  </Card>
-                </div>
-              </div>
+        {/* PROJELERİM BÖLÜMÜ (Uygulama-10 - Card Kullanımı) */}
+        <section id="projeler" className="py-24 px-4 bg-gray-50 dark:bg-gray-800/30">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-4xl font-bold text-center mb-16 text-gray-900 dark:text-white tracking-tight">
+              Projelerim
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              <Card 
+                variant="elevated" 
+                title="E-Ticaret Portalı" 
+                image={project1Img} 
+                imageAlt="E-Ticaret"
+                footer={<Button size="sm" className="w-full">İncele</Button>}
+              >
+                React ve Node.js ile tam kapsamlı e-ticaret uygulaması.
+              </Card>
+              <Card 
+                variant="outlined" 
+                title="Yazılım Blogu" 
+                image={project2Img}
+                footer={<div className="text-xs font-bold text-primary/60 tracking-widest uppercase">Next.js + MDX</div>}
+              >
+                Markdown destekli, modern mimarili kişisel blog sitesi.
+              </Card>
+              <Card 
+                variant="filled" 
+                title="Hava Durumu Pro" 
+                image={project3Img}
+                footer={<Button variant="ghost" size="sm">Detaylar &rarr;</Button>}
+              >
+                API entegrasyonu ile anlık dünya genelinde hava tahmini.
+              </Card>
             </div>
           </div>
         </section>
 
-        {/* ILETISIM */}
-        <section id="iletisim" className="py-24 container mx-auto px-6 max-w-3xl">
-          <h2 className="text-4xl font-bold mb-12 text-center">İletişim</h2>
-          <div className="bg-white dark:bg-gray-900 p-10 rounded-[3rem] shadow-2xl border border-gray-100 dark:border-gray-800 space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Input id="fname" label="Adınız" />
-              <Input id="femail" label="E-postanız" />
+        {/* İLETİŞİM FORMU (Uygulama-10 - Input ve Button Kullanımı) */}
+        <section id="iletisim" className="py-24 px-4">
+          <div className="max-w-2xl mx-auto space-y-12">
+            <h2 className="text-4xl font-bold text-center text-gray-900 dark:text-white tracking-tight">
+              İletişim
+            </h2>
+            <form className="space-y-6 bg-white dark:bg-gray-900 p-8 lg:p-12 rounded-[2.5rem] shadow-2xl border border-gray-100 dark:border-gray-800">
+              <Input id="name" label="Ad Soyad" placeholder="Adınızı giriniz" required />
+              <Input id="email" label="E-posta" type="email" placeholder="mail@örnek.com" required />
+              <div className="space-y-1.5 px-1">
+                <label htmlFor="message" className="block text-sm font-semibold text-gray-700 dark:text-gray-300">
+                  Mesajınız
+                </label>
+                <textarea 
+                  id="message" 
+                  rows={5} 
+                  required 
+                  placeholder="Bana bir mesaj bırakın..."
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                ></textarea>
+              </div>
+              <Button variant="primary" size="lg" type="submit" className="w-full py-5">
+                Gönder
+              </Button>
+            </form>
+          </div>
+        </section>
+
+        {/* UI KIT (Academic Showcase) */}
+        <section id="uikit" className="py-16">
+          <div className="container mx-auto px-6 border-t border-gray-100 dark:border-gray-800 pt-16">
+            <h2 className="text-center text-2xl font-black uppercase tracking-widest text-muted mb-12">Laboratuvar UI Kit</h2>
+            <div className="space-y-12">
+              <Alert variant="info" title="Bilgi">Başarıyla Tailwind v4'e geçildi.</Alert>
+              <div className="flex flex-wrap gap-4 justify-center">
+                <Button variant="primary">Primary</Button>
+                <Button variant="secondary">Secondary</Button>
+                <Button variant="danger">Danger</Button>
+                <Button variant="ghost">Ghost</Button>
+              </div>
             </div>
-            <Input id="fsubject" label="Konu" />
-            <div className="space-y-1.5">
-              <label className="text-sm font-semibold ml-1">Mesajınız</label>
-              <textarea className="w-full p-4 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl focus:ring-2 focus:ring-primary outline-none h-40 transition-all"></textarea>
-            </div>
-            <Button className="w-full py-5 text-lg" size="lg">Mesajı Gönder</Button>
           </div>
         </section>
       </main>
 
-      <footer className="py-12 text-center border-t border-gray-100 dark:border-gray-800">
-        <p className="text-muted text-sm font-medium tracking-widest">&copy; 2025 LEYLA GÜNEŞ &bull; WEB LAB HAFTA-4</p>
+      {/* FOOTER (Uygulama-10) */}
+      <footer className="bg-gray-100 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-10 px-4 text-center">
+        <p className="text-gray-500 dark:text-gray-400 text-sm font-bold tracking-widest uppercase">
+          &copy; 2025 Leyla Güneş. Tüm hakları saklıdır.
+        </p>
       </footer>
     </div>
   )
