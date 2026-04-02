@@ -1,184 +1,213 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
+@import './styles/tokens.css';
 
-  &:hover {
-    border-color: var(--accent-border);
+/* ============================================================
+   MOBİL VARSAYILAN (0 - 639px)
+   ============================================================ */
+
+/* Genel sifirlama */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Section'lar arasi bosluk */
+section {
+  padding: var(--space-xl) var(--space-md);
+}
+
+/* Section basliklari */
+section h2 {
+  font-size: var(--text-2xl);
+  color: var(--color-primary);
+  margin-bottom: var(--space-lg);
+  text-align: center;
+}
+
+/* Hakkimda: tek sutun, ortalanmis */
+.about-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+  text-align: center;
+}
+
+.about-content figure {
+  max-width: 200px;
+}
+
+.about-content img {
+  border-radius: var(--radius-full);
+  aspect-ratio: 1;
+  object-fit: cover;
+  box-shadow: var(--shadow-lg);
+}
+
+/* Iletisim formu */
+.form-group {
+  margin-bottom: var(--space-md);
+}
+
+label {
+  display: block;
+  margin-bottom: var(--space-xs);
+  font-weight: 600;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-size: var(--text-base);
+  transition: border-color var(--transition-fast);
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--color-primary);
+  outline: 2px solid var(--color-primary-dark);
+  outline-offset: 2px;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: var(--space-sm) var(--space-lg);
+  background: var(--color-primary);
+  color: var(--color-bg);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--text-base);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+button[type="submit"]:hover,
+button[type="submit"]:focus {
+  background: var(--color-secondary);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: var(--space-xl) var(--space-md);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+}
+
+/* ============================================================ */
+/* Skip Link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: #1E3A8A;
+  color: white;
+  padding: var(--space-sm) var(--space-md);
+  z-index: 100;
+}
+.skip-link:focus { top: 0; }
+
+/* Header & Nav */
+header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-md) var(--space-xl);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.site-title { font-size: var(--text-xl); font-weight: 700; color: var(--color-primary); }
+nav ul { display: flex; flex-wrap: wrap; list-style: none; gap: var(--space-sm); }
+nav a { color: var(--color-text); text-decoration: none; padding: var(--space-xs) var(--space-sm); border-radius: var(--radius-md); transition: background 0.3s; }
+nav a:hover { background: var(--color-primary); color: white; }
+
+/* Skill Tags */
+.skill-tags { display: flex; flex-wrap: wrap; gap: var(--space-sm); list-style: none; margin-top: var(--space-md); justify-content: center; }
+.skill-tags li { background: var(--color-primary); color: white; padding: var(--space-xs) var(--space-md); border-radius: var(--radius-full); font-size: 0.85rem; }
+
+/* Project Grid Default */
+.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-xl); }
+.project-card { display: flex; flex-direction: column; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
+.project-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.project-card img { height: 200px; object-fit: cover; }
+.card-content { padding: var(--space-lg); display: flex; flex-direction: column; flex-grow: 1; }
+.card-content h3 { font-size: var(--text-xl); margin-bottom: var(--space-sm); }
+.card-content p { color: var(--color-muted); flex-grow: 1; margin-bottom: var(--space-md); }
+.card-content .skill-tags { margin-top: auto; justify-content: flex-start; }
+
+/* ============================================================
+   TABLET (640px ve uzeri)
+   ============================================================ */
+@media (min-width: 640px) {
+  section {
+    padding: var(--space-2xl) var(--space-xl);
   }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
+
+  /* Hakkimda: yatay duzen */
+  .about-content {
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .about-content figure {
+    flex-shrink: 0;
+  }
+
+  .skill-tags {
+    justify-content: flex-start;
+  }
+
+  /* Form butonu tam genislik olmaktan cikar */
+  button[type="submit"] {
+    width: auto;
   }
 }
 
-.hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
+/* ============================================================
+   MASAUSTU (1024px ve uzeri)
+   ============================================================ */
+@media (min-width: 1024px) {
+  /* Icerik genisligi sinirla */
+  main {
+    max-width: 1200px;
     margin: 0 auto;
   }
 
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
+  section {
+    padding: var(--space-3xl) var(--space-xl);
   }
 
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
-}
-
-#center {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
-}
-
-#next-steps {
-  display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-}
-
-#next-steps ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
-}
-
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
-}
-
-.ticks {
-  position: relative;
-  width: 100%;
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
-
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
-  }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
+  /* Proje kartlari en az 3 sutun */
+  .project-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
