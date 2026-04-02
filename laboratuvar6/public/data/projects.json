@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "title": "E-Ticaret Platformu",
+    "description": "React ve Node.js ile tam kapsamli e-ticaret uygulamasi.",
+    "tech": ["React", "Node.js", "MongoDB"],
+    "year": 2024,
+    "category": "fullstack",
+    "featured": true,
+    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600"
+  },
+  {
+    "id": 2,
+    "title": "Blog Uygulamasi",
+    "description": "Next.js ile SEO dostu kisisel blog platformu.",
+    "tech": ["Next.js", "TypeScript", "Tailwind"],
+    "year": 2024,
+    "category": "frontend",
+    "featured": false,
+    "image": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=600"
+  },
+  {
+    "id": 3,
+    "title": "Hava Durumu API",
+    "description": "OpenWeather API ile anlik hava durumu sorgulama.",
+    "tech": ["JavaScript", "REST API", "CSS"],
+    "year": 2023,
+    "category": "frontend",
+    "featured": true,
+    "image": "https://images.unsplash.com/photo-1592210454359-9043f067919b?auto=format&fit=crop&q=80&w=600"
+  },
+  {
+    "id": 4,
+    "title": "Gorev Yoneticisi",
+    "description": "Drag-and-drop destekli Kanban tarzi gorev panosu.",
+    "tech": ["React", "TypeScript", "DnD Kit"],
+    "year": 2024,
+    "category": "frontend",
+    "featured": false,
+    "image": "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?auto=format&fit=crop&q=80&w=600"
+  },
+  {
+    "id": 5,
+    "title": "Chat Uygulamasi",
+    "description": "WebSocket ile gercek zamanli mesajlasma.",
+    "tech": ["React", "Socket.io", "Express"],
+    "year": 2023,
+    "category": "fullstack",
+    "featured": true,
+    "image": "https://images.unsplash.com/photo-1611746872915-64382b5c76da?auto=format&fit=crop&q=80&w=600"
+  }
+]

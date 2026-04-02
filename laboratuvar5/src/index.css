@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #1E3A8A;
+  --color-secondary: #2563EB;
+  --color-accent: #7C3AED;
+  --color-surface: #F9FAFB;
+  --color-muted: #6B7280;
+  --color-error: #DC2626;
+  --color-success: #16A34A;
+
+  --font-family-sans: system-ui, -apple-system, sans-serif;
+  --font-family-mono: 'Fira Code', 'Consolas', monospace;
+}
+
+/* Uygulama-5: Dark Mode Selector Strategy */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Standard global styles */
+html { scroll-behavior: smooth; }
+body { @apply bg-white text-gray-900 transition-colors duration-300 dark:bg-gray-900 dark:text-gray-100; }
